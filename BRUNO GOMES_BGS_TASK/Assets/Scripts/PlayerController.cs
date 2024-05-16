@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float playerSpeed;
     private float moveSpeedX, moveSpeedY;
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private BoxCollider2D interactCollider;
     private Transform orientationTransform;
 
     private void Start()
@@ -32,27 +31,12 @@ public class PlayerController : MonoBehaviour
                 isEnabled = false;
             }
         }
-
-        if(interactCollider != null)
-        {
-            interactCollider.enabled = false;
-        }
-        else
-        {
-            Debug.LogWarning($"{this.name} PlayerController script missing interaction collider refference");
-        }
     }
 
     private void Update()
     {
         if (isEnabled)
         {
-            ///Interaction reset
-            if (interactCollider.enabled)
-            {
-                interactCollider.enabled = false;
-            }
-
             ///Movement
             moveSpeedX = Input.GetAxisRaw("Horizontal") * playerSpeed;
             moveSpeedY = Input.GetAxisRaw("Vertical") * playerSpeed;
@@ -68,12 +52,6 @@ public class PlayerController : MonoBehaviour
             else if (moveSpeedX < 0) 
             {
                 orientationTransform.SetLocalPositionAndRotation(orientationTransform.localPosition, Quaternion.Euler(Vector3.down * 180));
-            }
-
-            ///Interaction
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                interactCollider.enabled = true;
             }
         }
     }
