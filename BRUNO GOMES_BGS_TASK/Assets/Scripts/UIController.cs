@@ -78,4 +78,9 @@ public class UIController : MonoBehaviour
             outfitList.SetActive(false);
         }
     }
+
+    public void CloseGame()
+    {
+        Application.Quit();
+    }
 }

@@ -1,18 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Outfit : MonoBehaviour
+[CreateAssetMenu(fileName = "New Outfit", menuName = "ScriptableObjects/Outfit", order = 1)]
+public class Outfit : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public new string name;
+    public string description;
+    public GameObject prefab;
+    public Sprite preview;
+    public int price;
 }

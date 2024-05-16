@@ -12,6 +12,13 @@ public class PlayerController : MonoBehaviour
     private Transform orientationTransform;
     public bool canInteract;
 
+    private void Awake()
+    {
+        ///Rename child object on awake and everytime outfit is swapped due to how animations are done, object requires specific name to be detected by Animator
+        ///Ensure player only ever has 1 direct child
+        this.transform.GetChild(0).name = "Rogue_pelvis_01";
+    }
+
     private void Start()
     {
         if (this.transform.childCount > 0 && GetComponentInChildren<Transform>(false))
