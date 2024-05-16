@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class OutfitSelector : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private InventoryController playerInventory;
 
-    // Update is called once per frame
-    void Update()
+    public void SelectOutfit(int outfitId)
     {
-        
+        ///Delete previous outfit
+        Destroy(this.GetComponentInChildren<Transform>().gameObject);
+
+        GameObject newOutfit = Instantiate(playerInventory.playerOutfits[outfitId].prefab);
+        newOutfit.transform.parent = transform;
     }
 }

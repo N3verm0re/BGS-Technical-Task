@@ -34,7 +34,7 @@ public class OutfitShopController : MonoBehaviour
         if(playerInventory.currencyAvailable >= outfitsAvailable[currentSelectedOutfitId].price)
         {
             playerInventory.currencyAvailable -= outfitsAvailable[currentSelectedOutfitId].price;
-            //Add outfit to player inventory
+            playerInventory.playerOutfits.Add(outfitsAvailable[currentSelectedOutfitId]);
             //Remove outfit from shop
         }
     }

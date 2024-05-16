@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class UIController : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class UIController : MonoBehaviour
     private bool outfitActive;
     [SerializeField] private GameObject shopPanel;
     public bool menuOpen;
+
+    public UnityEvent loadInventory;
+    public UnityEvent loadOutfits;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.I))
@@ -34,6 +38,8 @@ public class UIController : MonoBehaviour
         player.isEnabled = false;
         menuOpen = true;
         inventoryActive = true;
+
+        loadInventory.Invoke();
 
         inventoryPanel.SetActive(true);
         baseHUD.SetActive(false);
@@ -72,6 +78,8 @@ public class UIController : MonoBehaviour
         {
             outfitActive = true;
             outfitList.SetActive(true);
+
+            loadOutfits.Invoke();
         }
         else
         {

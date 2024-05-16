@@ -29,14 +29,14 @@ public class ItemShopController : MonoBehaviour
         itemName.text = itemsAvailable[id].name;
         itemDescription.text = itemsAvailable[id].description;
         itemPrice.text = $"Buy - {itemsAvailable[id].price}";
-        itemPrice.text = $"Sell - {itemsAvailable[id].sellValue}";
+        itemValue.text = $"Sell - {itemsAvailable[id].sellValue}";
     }
 
     public void BuyItem()
     {
-        if (playerInventory.currencyAvailable >= itemsAvailable[selectedItemId].price)
+        if (playerInventory.currencyAvailable >= itemsAvailable[selectedItemId].price && playerInventory.playerItems.Count < 9)
         {
-            //Add item to player inventory
+            playerInventory.playerItems.Add(itemsAvailable[selectedItemId]);
             playerInventory.currencyAvailable -= itemsAvailable[selectedItemId].price;
         }
         else
@@ -47,9 +47,22 @@ public class ItemShopController : MonoBehaviour
 
     public void SellItem()
     {
-        //if player has >0 of item
-        //Remove item from inventory
-        //Add value to currency
+        bool hasItem = false;
+        int i = 0;
+        foreach (Item item in playerInventory.playerItems)
+        {
+            if (item.itemId == itemsAvailable[selectedItemId].itemId) 
+            { 
+                hasItem = true;
+                playerInventory.playerItems.RemoveAt(i);
+                break; 
+            }
+        }
+
+        if (hasItem)
+        {
+            playerInventory.currencyAvailable += itemsAvailable[selectedItemId].sellValue;
+        }
     }
 
     public void GoToOutfits()
