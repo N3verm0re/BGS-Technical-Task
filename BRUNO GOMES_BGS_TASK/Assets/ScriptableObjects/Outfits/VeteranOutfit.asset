@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: VeteranOutfit
   m_EditorClassIdentifier: 
   name: The Veteran
+  outfitId: 3
   description: Rugged, experienced, stoic
   prefab: {fileID: 5621570434131937565, guid: c9bafabe29527b246a50006369508980, type: 3}
   preview: {fileID: 21300000, guid: f0dca671fefddc54c98270536b979b8b, type: 3}

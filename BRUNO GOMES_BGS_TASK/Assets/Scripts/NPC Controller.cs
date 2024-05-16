@@ -5,18 +5,17 @@ using UnityEngine.Events;
 
 public class NPCController : MonoBehaviour
 {
-    [SerializeField] private GameObject uiPanel;
     [SerializeField] private GameObject inRangeIndicator;
+    public UnityEvent openShopCall;
 
     private void Start()
     {
         inRangeIndicator.SetActive(false);
-        //uiPanel.SetActive(false);
     }
 
     public void OpenUI()
     {
-
+        openShopCall.Invoke();
     }
 
     public void InRange()

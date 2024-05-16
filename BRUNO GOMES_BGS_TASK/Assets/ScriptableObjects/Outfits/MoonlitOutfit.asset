@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: MoonlitOutfit
   m_EditorClassIdentifier: 
   name: Moonlit Assassin
+  outfitId: 2
   description: The night is your cover
   prefab: {fileID: 4377943860200302232, guid: febfe0a53d404ac4c9d8f5755b621255, type: 3}
   preview: {fileID: 21300000, guid: ae2d3e3bacfacde4981510b116293dba, type: 3}

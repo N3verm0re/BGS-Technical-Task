@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ShinobiOutfit
   m_EditorClassIdentifier: 
   name: Silent Shinobi
+  outfitId: 4
   description: No need for a hood when you're already a shadow.
   prefab: {fileID: 3634365891469913022, guid: 843bdab2292604e428ab00e24dfdefde, type: 3}
   preview: {fileID: 21300000, guid: 04f6c40e52535b941b42e11550f9cb8c, type: 3}

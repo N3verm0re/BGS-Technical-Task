@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: OliveOutfit
   m_EditorClassIdentifier: 
   name: Olive Rogue
+  outfitId: 1
   description: Drab and deadly.
   prefab: {fileID: 2020954295032762497, guid: 2331543d7ca02b24ebfb2f5f56e2cddd, type: 3}
   preview: {fileID: 21300000, guid: f7e7bed775fff8347b9e53c67e20875f, type: 3}

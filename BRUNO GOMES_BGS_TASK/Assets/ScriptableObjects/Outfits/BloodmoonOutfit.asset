@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: BloodmoonOutfit
   m_EditorClassIdentifier: 
   name: Blood Moon Cultist
+  outfitId: 5
   description: With great bloodshed, comes great power.
   prefab: {fileID: 6880500627141962886, guid: 7d27113474f127f4f8dff920aefe705b, type: 3}
   preview: {fileID: 21300000, guid: 7db7af78e8f9c45418a407bdd7958560, type: 3}

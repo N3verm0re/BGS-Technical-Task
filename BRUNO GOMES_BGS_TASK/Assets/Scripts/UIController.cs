@@ -12,6 +12,8 @@ public class UIController : MonoBehaviour
     private bool pauseActive;
     [SerializeField] private GameObject outfitList;
     private bool outfitActive;
+    [SerializeField] private GameObject shopPanel;
+    private bool shopActive;
     public bool menuOpen;
     private void Update()
     {
@@ -78,7 +80,26 @@ public class UIController : MonoBehaviour
             outfitList.SetActive(false);
         }
     }
+    public void OpenShop()
+    {
+        player.canInteract = false;
+        player.isEnabled = false;
+        menuOpen = true;
+        shopActive = true;
 
+        shopPanel.SetActive(true);
+        baseHUD.SetActive(false);
+    }
+    public void CloseShop()
+    {
+        player.canInteract = true;
+        player.isEnabled = true;
+        menuOpen = false;
+        shopActive = false;
+
+        shopPanel.SetActive(false);
+        baseHUD.SetActive(true);
+    }
     public void CloseGame()
     {
         Application.Quit();
