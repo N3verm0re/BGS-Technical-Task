@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private bool isEnabled;
+    public bool isEnabled;
     [SerializeField] private float playerSpeed;
     private float moveSpeedX, moveSpeedY;
     [SerializeField] private Rigidbody2D rb;
     private Transform orientationTransform;
+    public bool canInteract;
 
     private void Start()
     {
