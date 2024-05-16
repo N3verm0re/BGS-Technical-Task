@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class Outfit : ScriptableObject
 {
     public new string name;
-    public int outfitId;
     public string description;
     public GameObject prefab;
     public Sprite preview;

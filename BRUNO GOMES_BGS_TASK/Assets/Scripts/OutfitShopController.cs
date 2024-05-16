@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class OutfitShopController : MonoBehaviour
 {
+    [SerializeField] private InventoryController playerInventory;
     private int currentSelectedOutfitId;
     [SerializeField] private Outfit[] outfitsAvailable;
     [SerializeField] private Image outfitPreview;
@@ -22,7 +23,7 @@ public class OutfitShopController : MonoBehaviour
             Debug.LogError("outfit id not in shop");
         }
 
-        currentSelectedOutfitId = outfitsAvailable[id].outfitId;
+        currentSelectedOutfitId = id;
         outfitPreview.sprite = outfitsAvailable[id].preview;
         outfitName.text = outfitsAvailable[id].name;
         outfitDescription.text = outfitsAvailable[id].description;
@@ -30,9 +31,12 @@ public class OutfitShopController : MonoBehaviour
     }
     public void BuyOutfit()
     {
-        //if currency > cost
-        //add outfit to OutfitSelector
-        //remove button from shop
+        if(playerInventory.currencyAvailable >= outfitsAvailable[currentSelectedOutfitId].price)
+        {
+            playerInventory.currencyAvailable -= outfitsAvailable[currentSelectedOutfitId].price;
+            //Add outfit to player inventory
+            //Remove outfit from shop
+        }
     }
     public void GoToItems()
     {

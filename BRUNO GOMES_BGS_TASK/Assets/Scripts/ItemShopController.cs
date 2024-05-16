@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class ItemShopController : MonoBehaviour
 {
+    [SerializeField] private InventoryController playerInventory;
     private int selectedItemId;
     [SerializeField] private Item[] itemsAvailable;
     [SerializeField] private Image itemIcon;
@@ -14,7 +15,7 @@ public class ItemShopController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI itemPrice;
     [SerializeField] private TextMeshProUGUI itemValue;
     [SerializeField] private GameObject outfitsPanel;
-    [SerializeField] private GameObject itemsPanel;
+    [SerializeField] private GameObject itemsPanel;    
     public void SelectItem(int id)
     {
         if (id >= itemsAvailable.Length)
@@ -23,7 +24,7 @@ public class ItemShopController : MonoBehaviour
             return;
         }
 
-        selectedItemId = itemsAvailable[id].itemId;
+        selectedItemId = id;
         itemIcon.sprite = itemsAvailable[id].icon;
         itemName.text = itemsAvailable[id].name;
         itemDescription.text = itemsAvailable[id].description;
@@ -33,9 +34,15 @@ public class ItemShopController : MonoBehaviour
 
     public void BuyItem()
     {
-        //if item price < available currency
-        //Add item to inventory
-        //Deduct price
+        if (playerInventory.currencyAvailable >= itemsAvailable[selectedItemId].price)
+        {
+            //Add item to player inventory
+            playerInventory.currencyAvailable -= itemsAvailable[selectedItemId].price;
+        }
+        else
+        {
+            //Tell Player he does not have enough currency for item
+        }
     }
 
     public void SellItem()
