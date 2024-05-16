@@ -5,20 +5,26 @@ using UnityEngine;
 public class UIController : MonoBehaviour
 {
     [SerializeField] private PlayerController player;
+    [SerializeField] private GameObject baseHUD;
     [SerializeField] private GameObject inventoryPanel;
+    private bool inventoryActive;
     [SerializeField] private GameObject pausePanel;
+    private bool pauseActive;
     [SerializeField] private GameObject outfitList;
+    private bool outfitActive;
     public bool menuOpen;
     private void Update()
     {
-        if (!menuOpen && Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.I))
         {
-
+            if (!menuOpen && !inventoryActive) { OpenInventory(); }
+            else if (inventoryActive) { CloseInventory(); }
         }
 
-        if (!menuOpen && Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-
+            if (!menuOpen && !pauseActive) { OpenPause(); }
+            else if (pauseActive) { ClosePause(); }
         }
     }
     public void OpenInventory()
@@ -26,29 +32,50 @@ public class UIController : MonoBehaviour
         player.canInteract = false;
         player.isEnabled = false;
         menuOpen = true;
-        //OpenUI, hide HUD
+        inventoryActive = true;
+
+        inventoryPanel.SetActive(true);
+        baseHUD.SetActive(false);
     }
     public void CloseInventory() 
     {
-        //CloseUI, restore HUD
+        inventoryPanel.SetActive(false);
+        baseHUD.SetActive(true);
+
         player.canInteract = true;
         player.isEnabled = true;
+        inventoryActive = false;
         menuOpen = false;
     }
     public void OpenPause()
     {
-        //Hide HUD, Open pause
+        baseHUD.SetActive(false);
+        pausePanel.SetActive(true);
+
         Time.timeScale = 0f;
+        pauseActive = true;
         menuOpen = true;
     }
     public void ClosePause()
     {
         Time.timeScale = 1f;
         menuOpen = false;
-        //Close Pause, restore HUD
+        pauseActive = false;
+        
+        pausePanel.SetActive(false);
+        baseHUD?.SetActive(true);
     }
     public void OpenOutfitList()
     {
-        //Expand outfit list if closed, hide if open
+        if (!outfitActive) 
+        {
+            outfitActive = true;
+            outfitList.SetActive(true);
+        }
+        else
+        {
+            outfitActive = false;
+            outfitList.SetActive(false);
+        }
     }
 }
