@@ -8,8 +8,8 @@ using UnityEngine.UI;
 public class Item : ScriptableObject
 {
     public new string name;
+    public int itemId;
     public string description;
-    public GameObject prefab;
     public Sprite icon;
     public int price;
     public int sellValue;
